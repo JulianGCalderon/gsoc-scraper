@@ -1,6 +1,13 @@
-def main():
-    print("Hello from gsoc-scrape!")
+import sys
+from playwright.sync_api import sync_playwright
 
+def main(url: str):
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False)
+        page = browser.new_page()
+        page.goto(url)
+        page.pause()
 
 if __name__ == "__main__":
-    main()
+    url = sys.argv[1]
+    main(url)
