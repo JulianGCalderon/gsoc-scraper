@@ -16,18 +16,26 @@ def locate_url(page: Page, selector: str) -> str | None:
 
 
 def orgs(page: Page):
+    """
+    Paginate through all the organizations, yielding a page for each one.
+    """
+
     next_button = page.get_by_label("Next page").last
     org_cards = page.locator("app-orgs-card")
 
     while True:
+        # Wait for the first card to load. I'm not sure this is the
+        # correct way, but it works for now.
         org_cards.first.wait_for()
+
         for org_card in org_cards.all():
             org_anchor = org_card.locator("a")
             with page.context.expect_page() as org_page_event:
                 org_anchor.click()
-
             yield org_page_event.value
 
+        # If the next button is disabled, it means that there are no pages left.
+        # Otherwise, advance to the next page.
         if next_button.is_disabled():
             break
         else:
