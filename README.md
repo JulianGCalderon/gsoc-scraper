@@ -7,7 +7,7 @@ Scrapes organizations from GSoC.
 The script takes an URL to the organizations list, and outputs the data in JSONL format.
 
 ```bash
-uv run main.py https://summerofcode.withgoogle.com/programs/2025/organizations | tee data.json
+uv run main.py https://summerofcode.withgoogle.com/programs/2026/organizations | tee data.json
 ```
 
 To convert JSONL to CSV, we can use `jq`.
