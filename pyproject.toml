@@ -1,5 +1,5 @@
 [project]
-name = "gsoc-scrape"
+name = "gsoc-scraper"
 version = "0.1.0"
 description = "Scrapes organizations from GSoC"
 readme = "README.md"
