@@ -71,6 +71,9 @@ def main(url: str):
 
             org_page.close()
 
+        context.close()
+        browser.close()
+
 
 if __name__ == "__main__":
     url = sys.argv[1]
