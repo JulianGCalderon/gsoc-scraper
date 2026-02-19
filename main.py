@@ -7,7 +7,7 @@ from playwright.sync_api import sync_playwright, Page
 def locate_text(page: Page, selector: str) -> str | None:
     text = page.locator(selector).text_content()
     if text:
-        text.strip()
+        text = text.strip()
     return text
 
 
